@@ -1,0 +1,189 @@
+html {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  font-family: "Righteous", cursive;
+  background-image: url("food-background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.fa-spinner {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25vh;
+}
+
+.title-container h1 {
+  font-size: 80px;
+  color: rgb(118, 180, 56);
+}
+
+.title-container h1:first-child {
+  color: black;
+}
+
+.notif-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5vh;
+}
+
+.notif-form .input-container {
+  position: relative;
+  font-size: 24px;
+  margin-top: 50px;
+  color: black;
+}
+
+.notif-form label {
+  position: absolute;
+  left: 1px;
+  bottom: 5px;
+  transition: all ease 100ms;
+  text-transform: uppercase;
+}
+
+.notif-form input:focus + label {
+  bottom: 35px;
+}
+
+.notif-form input:valid + label {
+  bottom: 35px;
+}
+
+.notif-form input {
+  width: 500px;
+  height: 35px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid rgb(118, 180, 56);
+  font-family: "Righteous", cursive;
+  font-size: 24px;
+  appearance: none;
+  outline: none;
+}
+
+.notif-form button {
+  padding: 20px;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  font-family: "Righteous", cursive;
+  font-size: 24px;
+  margin-top: 15px;
+}
+
+.notification {
+  width: 300px;
+  height: 120px;
+  position: absolute;
+  top: 20px;
+  right: -320px;
+  transition: all ease 250ms;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  justify-content: space-between;
+}
+
+.notification .icon {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification .icon i {
+  font-size: 32px;
+}
+
+.notification .text {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.notification .icon div,
+.notification .text div {
+  display: none;
+}
+
+.notification.showing {
+  right: 20px;
+}
+
+@media (max-width: 500px) {
+  .notification {
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    top: 10px;
+    right: -270px;
+    transition: all ease 250ms;
+  }
+
+  .notification.showing {
+    right: 10px;
+  }
+
+  .notif-form input {
+    width: 300px;
+  }
+
+  .title-container {
+    padding: 20vh 0 0 0;
+  }
+
+  .title-container h1 {
+    font-size: 60px;
+  }
+
+  .notif-form .input-container {
+    font-size: 18px;
+  }
+
+  .notif-form input {
+    font-size: 18px;
+  }
+}

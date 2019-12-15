@@ -4,24 +4,81 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NotifEats!</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="notifeats.css" />
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
       crossorigin="anonymous"
     ></script>
-    <title>NotifEats!</title>
+    <script
+      src="https://kit.fontawesome.com/23898bdf61.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <div class="title">
-      NotifEats!
+    <div class="title-container">
+      <h1>notif</h1>
+      <h1>eats!</h1>
     </div>
     <form class="notif-form">
-      <label for="url">Restaurant's URL</label>
-      <input type="text" id="url" name="url" />
-      <label for="maxDate">Maximum wait time (minutes)</label>
-      <input type="number" id="maxDate" name="maxDate" />
+      <div class="input-container">
+        <input type="text" id="url" autocomplete="off" name="url" required />
+        <label for="url">Restaurant's URL</label>
+      </div>
+      <div class="input-container">
+        <input
+          type="number"
+          id="maxDate"
+          autocomplete="off"
+          name="maxDate"
+          required
+        />
+        <label for="maxDate">Maximum wait time (minutes)</label>
+      </div>
       <button type="submit">Go!</button>
     </form>
+    <div class="notification">
+      <div class="icon">
+        <div class="loading">
+          <i class="fas fa-spinner"></i>
+        </div>
+        <div class="badrequest">
+          <i class="fas fa-exclamation"></i>
+        </div>
+        <div class="error">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="available">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="created">
+          <i class="fas fa-thumbs-up"></i>
+        </div>
+      </div>
+      <div class="text">
+        <div class="loading">
+          Vérification du statut du restaurant...
+        </div>
+        <div class="badrequest">
+          Restaurant introuvable ! Veuillez vérifier votre saisie.
+        </div>
+        <div class="error">
+          Oops! Une erreur s'est produite... Veuillez réessayer ultérieurement.
+        </div>
+        <div class="available">
+          Bonne nouvelle ! Le restaurant est déjà disponible !
+        </div>
+        <div class="created">
+          OK ! On vous enverra un SMS quand le restaurant sera à nouveau
+          disponible !
+        </div>
+      </div>
+    </div>
     <script src="notifeats.js"></script>
   </body>
 </html>

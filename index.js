@@ -13,7 +13,7 @@ app.post('/notify', async (req, res) => {
     if (await isAvailable(page.data)) {
       res.sendStatus(200)
     } else {
-      const job = await startJob(req.body.url, req.body.maxDate)
+      const job = await startJob(req.body.url, req.body.maxDate, req.body.phoneNumber)
       res.sendStatus(job ? 201 : 500)
     }
   } catch (e) {
@@ -39,7 +39,7 @@ const getPage = async (url) => {
   })
 }
 
-const startJob = async (url, maxDate) => {
+const startJob = async (url, maxDate, phoneNumber) => {
   try {
     cron.job('*/10 * * * * *', async function () {
       if (Date.now() > maxDate) {
@@ -50,6 +50,7 @@ const startJob = async (url, maxDate) => {
         const page = await getPage(url)
         if (await isAvailable(page.data)) {
           console.log('Available, stopping...')
+          // Send SMS to phoneNumber
           this.stop()
         }
       }
